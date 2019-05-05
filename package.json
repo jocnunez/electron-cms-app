@@ -1,0 +1,21 @@
+{
+    "name": "electron-cms-app",
+    "version": "0.1.0",
+    "description": "CMS app with electronjs",
+    "main": "src/main.js",
+    "author": "Jose Núñez",
+    "license": "Apache-2.0",
+    "scripts": {
+        "dev": "electron . --debug",
+        "start": "electron .",
+        "test": "test"
+    },
+    "dependencies": {
+        "electron": "5.0.1"
+    },
+    "devDependencies": {
+        "devtron": "1.4.0",
+        "electron-packager": "13.1.1",
+        "electron-winstaller": "3.0.4"
+    }
+}
