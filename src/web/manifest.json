@@ -1,0 +1,7 @@
+{
+  "name": "electron-cms-app-web",
+  "short_name": "electron-cms-app-web",
+  "description": "Electron CMS app web",
+  "start_url": "/",
+  "display": "standalone"
+}
