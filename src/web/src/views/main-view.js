@@ -1,22 +1,32 @@
 import { LitElement, html } from 'lit-element';
-import '@vaadin/vaadin-button';
-import '@vaadin/vaadin-login/vaadin-login-overlay';
-import '@vaadin/vaadin-text-field/vaadin-email-field';
-import '@vaadin/vaadin-text-field/vaadin-password-field';
+import '@vaadin/vaadin-login/vaadin-login-form';
+import { store } from '../redux/store';
+import i18n from '../i18n/en';
 
 class MainView extends LitElement {
+    static get properties() {
+        return {
+            i18n: { type: Object },
+            user: { type: String }
+        }
+    }
+
+    stateChanged(state) {
+        this.user = state.user;
+    }
+
+    constructor() {
+        super();
+        this.i18n = i18n.login;
+    }
+
     render() {
         return html`
-            <vaadin-email-field
-                    placeholder="User">
-            </vaadin-email-field>
-            <vaadin-password-field
-                    placeholder="Password">
-            </vaadin-password-field>
-            <vaadin-button>
-                Login
-            </vaadin-button>
-            <vaadin-login-overlay opened no-forgot-password></vaadin-login-overlay>
+            <vaadin-login-form
+                    no-forgot-password
+                    opened
+                    .i18n="${this.i18n}">
+            </vaadin-login-form>
         `;
     }
 }

@@ -8,26 +8,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const modeConfig = env => require(`./build-utils/webpack.${env.mode}.js`)(env);
 const loadPresets = require('./build-utils/loadPresets');
 
-const webcomponentsjs = './node_modules/@webcomponents/webcomponentsjs';
-
-const polyfills = [
-    {
-        from: resolve(`${webcomponentsjs}/webcomponents-*.{js,map}`),
-        to: 'vendor',
-        flatten: true
-    },
-    {
-        from: resolve(`${webcomponentsjs}/bundles/*.{js,map}`),
-        to: 'vendor/bundles',
-        flatten: true
-    },
-    {
-        from: resolve(`${webcomponentsjs}/custom-elements-es5-adapter.js`),
-        to: 'vendor',
-        flatten: true
-    }
-];
-
 const assets = [
     {
         from: 'src/img',
@@ -47,7 +27,7 @@ const plugins = [
             minifyJS: true
         }
     }),
-    new CopyWebpackPlugin([...polyfills, ...assets], {
+    new CopyWebpackPlugin([...assets], {
         ignore: ['.DS_Store']
     })
 ];
